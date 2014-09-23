@@ -1,0 +1,25 @@
+<?php
+class SV_ViewOwnWarnings_XenForo_Model_User extends XFCP_SV_ViewOwnWarnings_XenForo_Model_User
+{
+	public function canWarnUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
+	{
+        $canWarn = parent::canWarnUser($user, $errorPhraseKey, $viewingUser);
+        if ($canWarn)
+        {
+            return true;
+        }
+
+        if (empty($profilePost['user_id']))
+        {
+            return false;
+        }
+
+        if (!empty($user['is_admin']) || !empty($user['is_moderator']))
+        {
+            $this->standardizeViewingUserReference($viewingUser);
+
+            return ($viewingUser['user_id'] && XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn'));
+        }
+        return false;
+	}
+}
