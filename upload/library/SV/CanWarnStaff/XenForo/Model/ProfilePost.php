@@ -1,5 +1,5 @@
 <?php
-class SV_ViewOwnWarnings_XenForo_Model_ProfilePost extends XFCP_SV_ViewOwnWarnings_XenForo_Model_ProfilePost
+class SV_CanWarnStaff_XenForo_Model_ProfilePost extends XFCP_SV_CanWarnStaff_XenForo_Model_ProfilePost
 {
     public function canWarnProfilePost(array $profilePost, array $user, &$errorPhraseKey = '', array $viewingUser = null)
     {

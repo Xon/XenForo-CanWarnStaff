@@ -1,5 +1,5 @@
 <?php
-class SV_ViewOwnWarnings_XenForo_Model_User extends XFCP_SV_ViewOwnWarnings_XenForo_Model_User
+class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Model_User
 {
 	public function canWarnUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
 	{
@@ -9,7 +9,7 @@ class SV_ViewOwnWarnings_XenForo_Model_User extends XFCP_SV_ViewOwnWarnings_XenF
             return true;
         }
 
-        if (empty($profilePost['user_id']))
+        if (empty($user['user_id']))
         {
             return false;
         }

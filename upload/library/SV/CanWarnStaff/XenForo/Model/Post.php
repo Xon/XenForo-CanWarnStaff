@@ -1,5 +1,5 @@
 <?php
-class SV_ViewOwnWarnings_XenForo_Model_Post extends XFCP_SV_ViewOwnWarnings_XenForo_Model_Post
+class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Model_Post
 {
     public function canWarnPost(array $post, array $thread, array $forum, &$errorPhraseKey = '', array $nodePermissions = null, array $viewingUser = null)
     {
@@ -9,12 +9,12 @@ class SV_ViewOwnWarnings_XenForo_Model_Post extends XFCP_SV_ViewOwnWarnings_XenF
             return true;
         }
 
-        if ($profilePost['warning_id'] || empty($profilePost['user_id']))
+        if ($post['warning_id'] || empty($post['user_id']))
         {
             return false;
         }
 
-        if (!empty($profilePost['is_admin']) || !empty($profilePost['is_moderator']))
+        if (!empty($post['is_admin']) || !empty($post['is_moderator']))
         {
             $this->standardizeViewingUserReferenceForNode($thread['node_id'], $viewingUser, $nodePermissions);
 
