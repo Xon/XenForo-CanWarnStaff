@@ -19,18 +19,18 @@
   <permissions>
     <permission_groups/>
     <permissions>
-      <permission permission_group_id="forum" permission_id="warn_admin" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="122"/>
-      <permission permission_group_id="forum" permission_id="warn_mod" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="121"/>
       <permission permission_group_id="general" permission_id="manageWarning_admin" permission_type="flag" depend_permission_id="manageWarning" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="127"/>
       <permission permission_group_id="general" permission_id="manageWarning_mod" permission_type="flag" depend_permission_id="manageWarning" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="126"/>
+      <permission permission_group_id="general" permission_id="warn_admin" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="122"/>
+      <permission permission_group_id="general" permission_id="warn_mod" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="121"/>
     </permissions>
     <interface_groups/>
   </permissions>
   <phrases>
-    <phrase title="permission_forum_warn_admin" version_id="1" version_string="1.0.0"><![CDATA[Give administrators warnings directly]]></phrase>
-    <phrase title="permission_forum_warn_mod" version_id="1" version_string="1.0.0"><![CDATA[Give moderators warnings directly]]></phrase>
     <phrase title="permission_general_manageWarning_admin" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Administrators]]></phrase>
     <phrase title="permission_general_manageWarning_mod" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Moderators]]></phrase>
+    <phrase title="permission_general_warn_admin" version_id="1" version_string="1.0.0"><![CDATA[Give administrators warnings directly]]></phrase>
+    <phrase title="permission_general_warn_mod" version_id="1" version_string="1.0.0"><![CDATA[Give moderators warnings directly]]></phrase>
   </phrases>
   <route_prefixes/>
   <style_properties/>
