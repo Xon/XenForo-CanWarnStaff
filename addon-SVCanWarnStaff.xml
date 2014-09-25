@@ -10,6 +10,7 @@
     <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="loadClassModel" active="1" hint="XenForo_Model_Post" description="Extend XenForo_Model_Post"/>
     <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="loadClassModel" active="1" hint="XenForo_Model_ProfilePost" description="Extend XenForo_Model_ProfilePost"/>
     <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="loadClassModel" active="1" hint="XenForo_Model_User" description="Extend XenForo_Model_User"/>
+    <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="loadClassModel" active="1" hint="XenForo_Model_Warning" description="Extend XenForo_Model_Warning"/>
   </code_event_listeners>
   <cron/>
   <email_templates/>
@@ -17,10 +18,20 @@
   <optiongroups/>
   <permissions>
     <permission_groups/>
-    <permissions/>
+    <permissions>
+      <permission permission_group_id="forum" permission_id="warn_admin" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="122"/>
+      <permission permission_group_id="forum" permission_id="warn_mod" permission_type="flag" depend_permission_id="warn" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="121"/>
+      <permission permission_group_id="general" permission_id="manageWarning_admin" permission_type="flag" depend_permission_id="manageWarning" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="127"/>
+      <permission permission_group_id="general" permission_id="manageWarning_mod" permission_type="flag" depend_permission_id="manageWarning" default_value="unset" interface_group_id="generalModeratorPermissions" display_order="126"/>
+    </permissions>
     <interface_groups/>
   </permissions>
-  <phrases/>
+  <phrases>
+    <phrase title="permission_forum_warn_admin" version_id="1" version_string="1.0.0"><![CDATA[Give administrators warnings directly]]></phrase>
+    <phrase title="permission_forum_warn_mod" version_id="1" version_string="1.0.0"><![CDATA[Give moderators warnings directly]]></phrase>
+    <phrase title="permission_general_manageWarning_admin" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Administrators]]></phrase>
+    <phrase title="permission_general_manageWarning_mod" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Moderators]]></phrase>
+  </phrases>
   <route_prefixes/>
   <style_properties/>
   <templates/>
