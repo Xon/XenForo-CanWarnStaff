@@ -17,7 +17,7 @@ class SV_CanWarnStaff_Listener
                 break;
             case 'XenForo_Model_Warning':
                 $extend[] = 'SV_CanWarnStaff_XenForo_Model_Warning';
-                break;                
+                break;
 		}      
 	}
 }
