@@ -30,10 +30,10 @@
     <interface_groups/>
   </permissions>
   <phrases>
-    <phrase title="permission_forum_prevent_warning" version_id="2" version_string="1.1.0"><![CDATA[Prevent warnings on own posts]]></phrase>
+    <phrase title="permission_forum_prevent_warning" version_id="2" version_string="1.1.0"><![CDATA[Prevent posts being warned]]></phrase>
     <phrase title="permission_general_manageWarning_admin" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Administrators]]></phrase>
     <phrase title="permission_general_manageWarning_mod" version_id="1" version_string="1.0.0"><![CDATA[Delete all warnings for Moderators]]></phrase>
-    <phrase title="permission_general_prevent_warning" version_id="2" version_string="1.1.0"><![CDATA[Prevent being warned directly]]></phrase>
+    <phrase title="permission_general_prevent_warning" version_id="2" version_string="1.1.0"><![CDATA[Prevent being directly warned]]></phrase>
     <phrase title="permission_general_warn_admin" version_id="1" version_string="1.0.0"><![CDATA[Give administrators warnings directly]]></phrase>
     <phrase title="permission_general_warn_mod" version_id="1" version_string="1.0.0"><![CDATA[Give moderators warnings directly]]></phrase>
     <phrase title="permission_profilePost_prevent_warning" version_id="2" version_string="1.1.0"><![CDATA[Prevent profile posts being warned]]></phrase>
