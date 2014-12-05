@@ -18,7 +18,7 @@ class SV_Helper_Permissions
         {
             $user_w_perms = $UserModel->setPermissionsFromUserId($user, $user['user_id']);
 
-            if (empty($user_w_perms['global_permission_cache']) && !$user_w_perms['global_permission_cache'] && isset($user_w_perms['permission_combination_id']))
+            if (empty($user_w_perms['global_permission_cache']) && isset($user_w_perms['permission_combination_id']))
             {
                 // force a rebuild if we don't have the perm cache
                 $perms = XenForo_Model::create('XenForo_Model_Permission')->rebuildPermissionCombinationById(
