@@ -1,6 +1,16 @@
 <?php
 class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Model_User
 {
+	public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
+	{
+        $canReport = parent::canReportUser($user, $errorPhraseKey, $viewingUser);
+        
+        if (!$canReport && $user['is_staff'])
+        {
+            return $this->canReportContent($errorPhraseKey, $viewingUser);
+        }
+	}
+    
 	public function canWarnUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
 	{
         if (empty($user['user_id']))
