@@ -1,4 +1,4 @@
-Xenforo-SVCanWarnStaff
+XenForo-SVCanWarnStaff
 ======================
 
 Allow moderators and administrators to be warned, and designated bless groups not to be warned. 
