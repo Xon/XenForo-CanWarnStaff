@@ -2,22 +2,18 @@
 
 class SV_CanWarnStaff_Listener
 {
-	public static function loadClassModel($class, &$extend)
-	{
-		switch ($class)
-		{
+    const AddonNameSpace = 'SV_CanWarnStaff';
+
+    public static function load_class($class, array &$extend)
+    {
+        switch ($class)
+        {
             case 'XenForo_Model_ProfilePost':
-                $extend[] = 'SV_CanWarnStaff_XenForo_Model_ProfilePost';
-                break;
             case 'XenForo_Model_Post':
-                $extend[] = 'SV_CanWarnStaff_XenForo_Model_Post';
-                break;
             case 'XenForo_Model_User':
-                $extend[] = 'SV_CanWarnStaff_XenForo_Model_User';
-                break;
             case 'XenForo_Model_Warning':
-                $extend[] = 'SV_CanWarnStaff_XenForo_Model_Warning';
+                $extend[] = self::AddonNameSpace.'_'.$class;
                 break;
-		}      
-	}
+        }
+    }
 }

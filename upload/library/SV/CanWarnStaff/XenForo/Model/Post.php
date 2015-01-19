@@ -1,6 +1,6 @@
 <?php
 class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Model_Post
-{   
+{
     public function canWarnPost(array $post, array $thread, array $forum, &$errorPhraseKey = '', array $nodePermissions = null, array $viewingUser = null)
     {
         if (empty($post['user_id']))
@@ -14,14 +14,14 @@ class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Mo
         {
             return false;
         }
-               
-        if (SV_Helper_Permissions::CheckGlobalPermission($this->_getUserModel(), $viewingUser, $post, 'forum', 'prevent_warning' ))
+
+        if ($this->_getUserModel()->CheckGlobalPermission($viewingUser, $post, 'forum', 'prevent_warning' ))
         {
             return false;
         }
-        
+
         $canWarn = parent::canWarnPost($post, $thread, $forum, $errorPhraseKey, $nodePermissions, $viewingUser);
-        
+
         if ($canWarn)
         {
             return true;
@@ -31,17 +31,17 @@ class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Mo
         {
             return false;
         }
-        
+
         if (!empty($post['is_admin']) && $post['is_admin'])
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_admin');
         }
-        
+
         if (!empty($post['is_moderator']) && $post['is_moderator'])
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_mod');
         }
-        
+
         return false;
     }
 }

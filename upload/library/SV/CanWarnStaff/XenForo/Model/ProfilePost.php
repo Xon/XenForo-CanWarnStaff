@@ -7,36 +7,36 @@ class SV_CanWarnStaff_XenForo_Model_ProfilePost extends XFCP_SV_CanWarnStaff_Xen
         {
             return false;
         }
-        
+
         $this->standardizeViewingUserReference($viewingUser);
-        
+
         if (empty($viewingUser['user_id']))
         {
             return false;
         }
-               
-        if (SV_Helper_Permissions::CheckGlobalPermission($this->_getUserModel(), $viewingUser, $profilePost, 'profilePost', 'prevent_warning' ))
+
+        if ($this->_getUserModel()->CheckGlobalPermission($viewingUser, $profilePost, 'profilePost', 'prevent_warning' ))
         {
             return false;
-        } 
-        
+        }
+
         $canWarn = parent::canWarnProfilePost($profilePost, $user, $errorPhraseKey, $viewingUser);
 
         if ($canWarn)
         {
             return true;
         }
-       
+
         if (!empty($profilePost['is_admin']) && $profilePost['is_admin'])
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_admin');
         }
-        
+
         if (!empty($profilePost['is_moderator']) && $profilePost['is_moderator'])
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_mod');
         }
-        
+
         return false;
     }
 }
