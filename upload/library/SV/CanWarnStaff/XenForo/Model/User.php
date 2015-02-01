@@ -50,11 +50,15 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
 
     public function CheckGlobalPermission(array &$viewingUser, array &$user, $key, $permission)
     {
-        if (!isset($this->_permissionCache[$user['user_id']]))
+        if (!isset($user['permission_combination_id']))
         {
-            $this->_permissionCache[$user['user_id']] = $this->_getPermissionsForUser($viewingUser, $user);
+            return false;
         }
-        return XenForo_Permission::hasPermission($this->_permissionCache[$user['user_id']], $key, $permission);
+        if (!isset($this->_permissionCache[$user['permission_combination_id']]))
+        {
+            $this->_permissionCache[$user['permission_combination_id']] = $this->_getPermissionsForUser($viewingUser, $user);
+        }
+        return XenForo_Permission::hasPermission($this->_permissionCache[$user['permission_combination_id']], $key, $permission);
     }
 
 	public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
