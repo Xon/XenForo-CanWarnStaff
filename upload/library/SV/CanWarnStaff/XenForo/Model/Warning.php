@@ -1,8 +1,8 @@
 <?php
 class SV_CanWarnStaff_XenForo_Model_Warning extends XFCP_SV_CanWarnStaff_XenForo_Model_Warning
 {
-	public function canDeleteWarning(array $warning, &$errorPhraseKey = '', array $viewingUser = null)
-	{
+    public function canDeleteWarning(array $warning, &$errorPhraseKey = '', array $viewingUser = null)
+    {
         $this->standardizeViewingUserReference($viewingUser);
 
         $canDelete = parent::canDeleteWarning($warning, $errorPhraseKey, $viewingUser);
@@ -23,13 +23,13 @@ class SV_CanWarnStaff_XenForo_Model_Warning extends XFCP_SV_CanWarnStaff_XenForo
         }
 
         return $canDelete;
-	}
+    }
 
-	public function canUpdateWarningExpiration(array $warning, &$errorPhraseKey = '', array $viewingUser = null)
-	{
+    public function canUpdateWarningExpiration(array $warning, &$errorPhraseKey = '', array $viewingUser = null)
+    {
         $this->standardizeViewingUserReference($viewingUser);
 
-		$canUpdate = parent::canUpdateWarningExpiration($warning, $errorPhraseKey, $viewingUser);
+        $canUpdate = parent::canUpdateWarningExpiration($warning, $errorPhraseKey, $viewingUser);
 
         if (empty($viewingUser['user_id']))
         {
@@ -47,5 +47,5 @@ class SV_CanWarnStaff_XenForo_Model_Warning extends XFCP_SV_CanWarnStaff_XenForo
         }
 
         return $canUpdate;
-	}
+    }
 }

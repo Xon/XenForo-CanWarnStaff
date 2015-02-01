@@ -61,8 +61,8 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         return XenForo_Permission::hasPermission($this->_permissionCache[$user['permission_combination_id']], $key, $permission);
     }
 
-	public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
-	{
+    public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
+    {
         $canReport = parent::canReportUser($user, $errorPhraseKey, $viewingUser);
         if ($canReport)
         {
@@ -75,10 +75,10 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         }
 
         return $canReport;
-	}
+    }
 
-	public function canWarnUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
-	{
+    public function canWarnUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
+    {
         if (empty($user['user_id']))
         {
             return false;
@@ -114,5 +114,5 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         }
 
         return false;
-	}
+    }
 }
