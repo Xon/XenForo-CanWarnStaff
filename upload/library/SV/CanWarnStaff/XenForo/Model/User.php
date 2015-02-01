@@ -4,11 +4,11 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
     public function _getPermissionsForUser(array &$viewingUser, array &$user)
     {
         $permissions = array();
-        if ($viewingUser['user_id'] == $user['user_id'] && isset($viewingUser['permissions']) && $viewingUser['permissions'])
+        if ($viewingUser['user_id'] == $user['user_id'] && !empty($viewingUser['permissions']))
         {
             $permissions = $viewingUser['permissions'];
         }
-        else if (isset($user['permissions']) && $user['permissions'])
+        else if (!empty($user['permissions']))
         {
             $permissions = $user['permissions'];
         }
