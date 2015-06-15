@@ -1,7 +1,7 @@
 <?php
 class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Model_User
 {
-    public function _getPermissionsForUser(array &$viewingUser, array &$user)
+    public function __getPermissionsForUser(array &$viewingUser, array &$user)
     {
         $permissions = array();
         if ($viewingUser['user_id'] == $user['user_id'] && !empty($viewingUser['permissions']))
@@ -46,19 +46,19 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         return $permissions;
     }
 
-    protected $_permissionCache = array();
+    protected $__permissionCache = array();
 
-    public function CheckGlobalPermission(array &$viewingUser, array &$user, $key, $permission)
+    public function _CheckGlobalPermission(array &$viewingUser, array &$user, $key, $permission)
     {
         if (!isset($user['permission_combination_id']))
         {
             return false;
         }
-        if (!isset($this->_permissionCache[$user['permission_combination_id']]))
+        if (!isset($this->__permissionCache[$user['permission_combination_id']]))
         {
-            $this->_permissionCache[$user['permission_combination_id']] = $this->_getPermissionsForUser($viewingUser, $user);
+            $this->__permissionCache[$user['permission_combination_id']] = $this->__getPermissionsForUser($viewingUser, $user);
         }
-        return XenForo_Permission::hasPermission($this->_permissionCache[$user['permission_combination_id']], $key, $permission);
+        return XenForo_Permission::hasPermission($this->__permissionCache[$user['permission_combination_id']], $key, $permission);
     }
 
     public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
@@ -91,7 +91,7 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
             return false;
         }
 
-        if ($this->CheckGlobalPermission($viewingUser, $user, 'general', 'prevent_warning' ))
+        if ($this->_CheckGlobalPermission($viewingUser, $user, 'general', 'prevent_warning' ))
         {
             return false;
         }

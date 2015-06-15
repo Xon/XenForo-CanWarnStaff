@@ -15,7 +15,7 @@ class SV_CanWarnStaff_XenForo_Model_ProfilePost extends XFCP_SV_CanWarnStaff_Xen
             return false;
         }
 
-        if ($this->_getUserModel()->CheckGlobalPermission($viewingUser, $profilePost, 'profilePost', 'prevent_warning' ))
+        if ($this->_getUserModel()->_CheckGlobalPermission($viewingUser, $profilePost, 'profilePost', 'prevent_warning' ))
         {
             return false;
         }

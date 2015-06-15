@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<addon addon_id="SVCanWarnStaff" title="Can Warn Staff" version_string="1.1.4" version_id="101040" url="https://xenforo.com/community/resources/can-warn-staff.3643/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+<addon addon_id="SVCanWarnStaff" title="Can Warn Staff" version_string="1.1.4a" version_id="101041" url="https://xenforo.com/community/resources/can-warn-staff.3643/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -7,10 +7,10 @@
   <admin_template_modifications/>
   <code_events/>
   <code_event_listeners>
-    <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_Post" description="Extend XenForo_Model_Post"/>
-    <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_ProfilePost" description="Extend XenForo_Model_ProfilePost"/>
-    <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_User" description="Extend XenForo_Model_User"/>
-    <listener event_id="load_class_model" execute_order="10" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_Warning" description="Extend XenForo_Model_Warning"/>
+    <listener event_id="load_class_model" execute_order="3643" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_Post" description="Extend XenForo_Model_Post"/>
+    <listener event_id="load_class_model" execute_order="3643" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_ProfilePost" description="Extend XenForo_Model_ProfilePost"/>
+    <listener event_id="load_class_model" execute_order="3643" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_User" description="Extend XenForo_Model_User"/>
+    <listener event_id="load_class_model" execute_order="3643" callback_class="SV_CanWarnStaff_Listener" callback_method="load_class" active="1" hint="XenForo_Model_Warning" description="Extend XenForo_Model_Warning"/>
   </code_event_listeners>
   <cron/>
   <email_templates/>
