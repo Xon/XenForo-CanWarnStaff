@@ -1,6 +1,19 @@
 <?php
 class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Model_Post
 {
+    public function getPostsInThread($threadId, array $fetchOptions = array())
+    {
+        $posts = parent::getPostsInThread($threadId, $fetchOptions);
+
+        if ($posts)
+        {
+            $permissionCombinations = array_unique(XenForo_Application::arrayColumn($posts, 'permission_combination_id'));
+            $this->_getUserModel()->_preloadGlobalPermissions($permissionCombinations);
+        }
+
+        return $posts;
+    }
+
     public function canWarnPost(array $post, array $thread, array $forum, &$errorPhraseKey = '', array $nodePermissions = null, array $viewingUser = null)
     {
         if (empty($post['user_id']))

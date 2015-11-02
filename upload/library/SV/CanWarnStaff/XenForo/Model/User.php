@@ -12,6 +12,10 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         {
             $permissions = $user['permissions'];
         }
+        else if (!empty($user['global_permission_cache']))
+        {
+            $permissions = XenForo_Permission::unserializePermissions($user['global_permission_cache']);
+        }
 
         if (empty($permissions))
         {
@@ -46,7 +50,38 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         return $permissions;
     }
 
-    protected $__permissionCache = array();
+    protected static $__permissionCache = array();
+
+    public function _preloadGlobalPermissions(array $permissionCombinations = null)
+    {
+        if (empty($permissionCombinations))
+        {
+            return;
+        }
+
+        $viewingUser = XenForo_Visitor::getInstance()->toArray();
+        if (isset($viewingUser['permission_combination_id']) && !isset(self::$__permissionCache[$viewingUser['permission_combination_id']]))
+        {
+            self::$__permissionCache[$viewingUser['permission_combination_id']] = $viewingUser['permissions'];
+        }
+
+        $toLoad = array_diff($permissionCombinations, array_keys(self::$__permissionCache));
+        if ($toLoad)
+        {
+            $list = implode(',', array_fill(0, count($toLoad), '?'));
+            $permUsers = $this->_getDb()->fetchAll('
+                SELECT permission_combination_id, cache_value
+                FROM xf_permission_combination AS permission_combination
+                WHERE permission_combination_id in ('.$list.')
+            ', $toLoad);
+
+            if ($permUsers)
+            foreach($permUsers as &$permUser)
+            {
+                self::$__permissionCache[$permUser['permission_combination_id']] = XenForo_Permission::unserializePermissions($permUser['cache_value']);
+            }
+        }
+    }
 
     public function _CheckGlobalPermission(array &$viewingUser, array &$user, $key, $permission)
     {
@@ -54,11 +89,12 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
         {
             return false;
         }
-        if (!isset($this->__permissionCache[$user['permission_combination_id']]))
+
+        if (!isset(self::$__permissionCache[$user['permission_combination_id']]))
         {
-            $this->__permissionCache[$user['permission_combination_id']] = $this->__getPermissionsForUser($viewingUser, $user);
+            self::$__permissionCache[$user['permission_combination_id']] = $this->__getPermissionsForUser($viewingUser, $user);
         }
-        return XenForo_Permission::hasPermission($this->__permissionCache[$user['permission_combination_id']], $key, $permission);
+        return XenForo_Permission::hasPermission(self::$__permissionCache[$user['permission_combination_id']], $key, $permission);
     }
 
     public function canReportUser(array $user, &$errorPhraseKey = '', array $viewingUser = null)
