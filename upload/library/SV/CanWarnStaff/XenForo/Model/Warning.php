@@ -12,12 +12,12 @@ class SV_CanWarnStaff_XenForo_Model_Warning extends XFCP_SV_CanWarnStaff_XenForo
             return false;
         }
 
-        if (!empty($warning['is_moderator']) && $warning['is_moderator'])
+        if (!empty($warning['is_moderator']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'manageWarning_mod');
         }
 
-        if (!empty($warning['is_admin']) && $warning['is_admin'])
+        if (!empty($warning['is_admin']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'manageWarning_admin');
         }
@@ -36,12 +36,12 @@ class SV_CanWarnStaff_XenForo_Model_Warning extends XFCP_SV_CanWarnStaff_XenForo
             return false;
         }
 
-        if (!empty($warning['is_moderator']) && $warning['is_moderator'])
+        if (!empty($warning['is_moderator']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'manageWarning_mod');
         }
 
-        if (!empty($warning['is_admin']) &&  $warning['is_admin'])
+        if (!empty($warning['is_admin']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'manageWarning_admin');
         }

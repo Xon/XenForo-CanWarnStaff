@@ -45,12 +45,12 @@ class SV_CanWarnStaff_XenForo_Model_Post extends XFCP_SV_CanWarnStaff_XenForo_Mo
             return false;
         }
 
-        if (!empty($post['is_admin']) && $post['is_admin'])
+        if (!empty($post['is_admin']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_admin');
         }
 
-        if (!empty($post['is_moderator']) && $post['is_moderator'])
+        if (!empty($post['is_moderator']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_mod');
         }

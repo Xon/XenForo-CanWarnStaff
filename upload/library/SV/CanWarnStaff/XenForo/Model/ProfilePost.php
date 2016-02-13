@@ -78,12 +78,12 @@ class SV_CanWarnStaff_XenForo_Model_ProfilePost extends XFCP_SV_CanWarnStaff_Xen
             return true;
         }
 
-        if (!empty($profilePost['is_admin']) && $profilePost['is_admin'])
+        if (!empty($profilePost['is_admin']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_admin');
         }
 
-        if (!empty($profilePost['is_moderator']) && $profilePost['is_moderator'])
+        if (!empty($profilePost['is_moderator']))
         {
             return XenForo_Permission::hasPermission($viewingUser['permissions'], 'general', 'warn_mod');
         }
