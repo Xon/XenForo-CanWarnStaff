@@ -47,7 +47,7 @@ class SV_CanWarnStaff_XenForo_Model_Thread extends XFCP_SV_CanWarnStaff_XenForo_
             return false;
         }
 
-        return deleteThreadReplyBan($thread, $user);
+        return parent::deleteThreadReplyBan($thread, $user);
     }
 
     protected function _getUserModel()
