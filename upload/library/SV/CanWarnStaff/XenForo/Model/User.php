@@ -54,6 +54,7 @@ class SV_CanWarnStaff_XenForo_Model_User extends XFCP_SV_CanWarnStaff_XenForo_Mo
 
     public function _preloadGlobalPermissions(array $permissionCombinations = null)
     {
+        $permissionCombinations = array_filter($permissionCombinations);
         if (empty($permissionCombinations))
         {
             return;
